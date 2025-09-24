@@ -1,18 +1,23 @@
 models:
   - name: stg_jaffle_shop__customers
+    description: unique customers and respective details
     columns:
       - name: customer_id
+        description: PK
         data_tests:
           - not_null # primary key test
           - unique
 
   - name: stg_jaffle_shop__orders
+    description: unique orders and respective details
     columns:
       - name: order_id
+        description: PK
         data_tests:
           - not_null # primary key test
           - unique
       - name: status
+        description: doc('orders_status') # ' ' nécessaires pour du YAML
         data_tests:
           - accepted_values:
               arguments:

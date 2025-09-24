@@ -1,11 +1,14 @@
 sources:
   - name: jaffle_shop # alias for the source
+    description: Clone of a Postgres database
     database: raw
     schema: jaffle_shop 
     tables:
       - name: customers
+        description: Raw customers data from the e-commerce website
         columns:
           - name: id # id dans la source mais customer_id dans le modèle
+            description: PK
             data_tests:
               - not_null
               - unique
