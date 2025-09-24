@@ -1,0 +1,12 @@
+macros:
+  - name: cent_to_dollar
+    description: Converts a value in cents to dollars.
+    arguments:
+      - name: col_name
+        description: The name of the column containing the amount in cents.
+        type: string
+    return_type: integer
+    examples:
+      - code: |
+          {{ cent_to_dollar('amount') }}
+        description: Converts the 'amount' column from cents to dollars.
