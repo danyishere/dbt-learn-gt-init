@@ -1,14 +1,11 @@
-{% macro template_example (args) %}
+{% macro template_example(args) %}
     {% set query %}
-        select 1 as boolean
+        select * from {{ ref('stg_jaffle_shop__orders') }}
     {% endset %}
 
     {% if execute %}
-        {% set results=run_query(query).columns[0].values()[0] %}
+        {% set results=run_query(query).rows[0].values() %}
         {{ log('SQL results' ~ results , info=True) }}
-
-        select {{ results }} as _is_real
-        from a_real_table
     {% endif %}
 
 {% endmacro %}

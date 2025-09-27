@@ -1,0 +1,1 @@
+{{ union_tables_by_pattern(database='raw', schema='jaffle_shop', pattern='orders__%') }}
