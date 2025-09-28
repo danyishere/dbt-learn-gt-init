@@ -39,7 +39,7 @@ final as (
     left join order_payments using (order_id)
     
 )
-select * from final
+select * from final A
 {% if is_incremental() %}
-where _etl_loaded_at >= (select B._etl_loaded_at from {{ this }} as B order by B._etl_loaded_at desc limit 1)
+where A._etl_loaded_at >= (select B._etl_loaded_at from {{ this }} as B order by B._etl_loaded_at desc limit 1)
 {% endif %}
