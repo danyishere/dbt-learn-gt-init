@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='incremental'
+    )
+}}
+
 with orders as (
 
     select * from {{ ref('stg_jaffle_shop__orders') }}
@@ -26,9 +32,14 @@ final as (
         orders.customer_id,
         orders.order_date,
         orders.status,
+        orders._etl_loaded_at,
         coalesce(order_payments.amount, 0) as amount
 
     from orders
     left join order_payments using (order_id)
+    
 )
 select * from final
+{% if is_incremental() %}
+where _etl_loaded_at >= (select B._etl_loaded_at from {{ this }} as B order by B._etl_loaded_at desc limit 1)
+{% endif %}
