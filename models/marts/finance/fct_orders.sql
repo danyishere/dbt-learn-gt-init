@@ -1,6 +1,8 @@
 {{
     config(
-        materialized='incremental'
+        materialized='incremental',
+        incremental_strategy='merge',
+        on_schema_change='fail'
     )
 }}
 
@@ -31,8 +33,8 @@ final as (
         orders.order_id,
         orders.customer_id,
         orders.order_date,
-        orders.status,
-        orders._etl_loaded_at,
+        orders.status AS order_status,
+        orders._etl_loaded_at ,
         coalesce(order_payments.amount, 0) as amount
 
     from orders
