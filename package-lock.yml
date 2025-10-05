@@ -5,10 +5,10 @@ packages:
 - package: dbt-labs/codegen
   name: codegen
   version: 0.13.1
+- package: tnightengale/dbt_meta_testing
+  name: dbt_meta_testing
+  version: 0.3.6
 - package: dbt-labs/dbt_utils
   name: dbt_utils
   version: 1.3.1
-- package: gitlabhq/snowflake_spend
-  name: snowflake_spend
-  version: 1.4.0
-sha1_hash: 23dba84aeb1007c9ead08588a2c63096f129ff40
+sha1_hash: da4f1671f7e2de5288405eacae4ccab479ddbd3c

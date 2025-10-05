@@ -31,15 +31,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   jaffle_shop:
+    +required_docs: true
     staging:
       +materialized: view
-      #+schema: staging
+      #+schema: staging # use a different schema for staging models
     marts:
       +materialized: table
-    +meta:
-      audit:
-        +enabled: false
-      snowflake_spend:
-        +enabled: true
-flags:
-  require_generic_test_arguments_property: true

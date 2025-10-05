@@ -4,7 +4,7 @@ version: "0.5.0"
 require-dbt-version: [">=1.1.0", "<2.0.0"]
 config-version: 2
 
+target-path: "target"
 clean-targets: ["target", "dbt_packages"]
 macro-paths: ["macros"]
-flags:
-  require_generic_test_arguments_property: true
+log-path: "logs"
