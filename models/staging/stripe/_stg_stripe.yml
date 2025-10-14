@@ -7,3 +7,9 @@ models:
         data_tests:
           - not_null # primary key test
           - unique
+      - name: failure_test
+        description: fake column to test failure storing in the warehouse
+        data_tests:
+          - not_null:
+              config:
+                store_failures: true

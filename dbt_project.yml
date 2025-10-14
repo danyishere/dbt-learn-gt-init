@@ -31,7 +31,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   jaffle_shop:
-    +required_docs: true
+    #+required_docs: true
     staging:
       +materialized: view
       #+schema: staging # use a different schema for staging models
