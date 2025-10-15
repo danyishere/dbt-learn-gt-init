@@ -5,7 +5,10 @@ models:
       - name: payment_id
         description: PK
         data_tests:
-          - not_null # primary key test
+          - not_null:
+              arguments:
+                model_name: ref('stg_stripe__payments')
+                column_name: payment_id # primary key test
           - unique
       - name: amount
         description: payment amount
