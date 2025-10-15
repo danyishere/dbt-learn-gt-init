@@ -7,9 +7,10 @@ models:
         data_tests:
           - not_null # primary key test
           - unique
-      - name: failure_test
-        description: fake column to test failure storing in the warehouse
+      - name: amount
+        description: payment amount
         data_tests:
-          - not_null:
-              config:
-                store_failures: true
+          - greater_than_100:
+              arguments:
+                model_name: ref('stg_stripe__payments')
+                column_name: amount
