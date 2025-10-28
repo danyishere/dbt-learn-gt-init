@@ -3,7 +3,7 @@
     with selection as(
         select {{ column_name }}
         from {{ model_name }}
-        where {{ column_name }} is not null and {{ column_name }} != 00000
+        where {{ column_name }} is null
         group by 1
         having count(*) > 1
     )

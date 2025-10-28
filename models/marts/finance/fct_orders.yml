@@ -1,0 +1,37 @@
+models:
+  - name: fct_orders
+    description: "Fact table for orders including order details and payment information."
+    columns:
+      - name: order_id
+        description: "Primary key for the orders fact table."
+        data_tests:
+          - not_null:
+              arguments:
+                model_name: ref('fct_orders')
+                column_name: order_id # primary key test
+      - name: customer_id
+        description: "Foreign key referencing the customer who placed the order."
+        data_tests:
+          - not_null:
+              arguments:
+                model_name: ref('fct_orders')
+                column_name: customer_id # primary key test
+      - name: order_date
+        description: "The date when the order was placed."
+        data_tests:
+          - not_null:
+              arguments:
+                model_name: ref('fct_orders')
+                column_name: order_date # primary key test
+      - name: amount
+        description: "Total amount for the order."
+        data_tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
+                min_value: 10
+                max_value: 50
+              config:
+                store_failures_as: view
+                severity: warn
+                where: "order_status = 'returned'"
+                limit: 5 # limit the number of failing rows shown in the test results
