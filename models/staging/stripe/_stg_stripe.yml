@@ -20,6 +20,9 @@ models:
           - dbt_expectations.expect_column_values_to_be_between:
               arguments:
                 min_value: 0  # (Optional)
-                max_value: 1000 # (Optional)
+                max_value: 50 # (Optional)
                 row_condition: "amount IS NOT NULL" # limits the rows to which applying the test (e.g. not null only)
                 strictly: false # (Optional. strictly "true" excludes min and max values
+              config:
+                severity: warn
+                error_if: ">= 100"

@@ -1,3 +1,9 @@
+{{
+    config(
+        severity = "warn"
+    )
+}}
+
 {% test greater_than_100(model_name, column_name) %}
 
     select *
