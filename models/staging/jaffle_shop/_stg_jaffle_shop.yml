@@ -35,3 +35,31 @@ models:
           - dbt_utils.expression_is_true:
               arguments:
                 expression: "<= CURRENT_TIMESTAMP()"
+  - name: stg_jaffle_shop__items
+    description: unique items and respective details
+    columns:
+      - name: item_id
+        description: PK
+        data_tests:
+          - unique
+  - name: stg_jaffle_shop__products
+    description: unique products and respective details
+    columns:
+      - name: product_id
+        description: PK
+        data_tests:
+          - unique
+  - name: stg_jaffle_shop__stores
+    description: unique stores and respective details
+    columns:
+      - name: store_id
+        description: PK
+        data_tests:
+          - unique
+  - name: stg_jaffle_shop__supplies
+    description: unique supplies and respective details
+    columns:
+      - name: supply_id
+        description: PK
+        data_tests:
+          - unique

@@ -1,0 +1,19 @@
+semantic_models:
+- name: semantic_dim_customers
+  description: An dim table fir customers
+  model: ref('dim_customers')
+
+  entities:
+  - name: customer_id
+    type: primary
+
+  dimensions:
+  - name: most_recent_order_date
+    type: time
+    time_grains:
+    - day
+  
+  measures:
+  - name: total_lifetime_value    
+    agg: sum
+    expr: lifetime_value
