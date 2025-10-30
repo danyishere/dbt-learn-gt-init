@@ -1,0 +1,31 @@
+semantic_models:
+- name: fct_orders_semantic
+  description: A date dimension table providing fiscal time attributes for analysis.
+  model: ref('fct_orders')
+  entities:
+  - name: order_id
+    type: primary
+  - name: customer_id
+    type: foreign
+  - name: order_date
+    type: time
+    sql: order_date
+    time_grains:
+    - day
+    - week
+    - month
+    - quarter
+    - year
+  dimensions:
+  - name: order_status
+    type: categorical
+  - name: customer_id
+    type: categorical
+  - name: order_id
+    type: categorical
+  - name: order_date
+    type: temporal
+  measures:
+  - name: total_amount    
+    type: sum
+    sql: amount
