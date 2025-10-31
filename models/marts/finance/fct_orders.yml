@@ -3,26 +3,17 @@ models:
     description: "Fact table for orders including order details and payment information."
     columns:
       - name: order_id
-        description: "Primary key for the orders fact table."
+        description: "Foreign key for the orders fact table."
         data_tests:
-          - not_null:
-              arguments:
-                model_name: ref('fct_orders')
-                column_name: order_id # primary key test
+          - not_null
       - name: customer_id
         description: "Foreign key referencing the customer who placed the order."
         data_tests:
-          - not_null:
-              arguments:
-                model_name: ref('fct_orders')
-                column_name: customer_id # primary key test
+          - not_null
       - name: order_date
         description: "The date when the order was placed."
         data_tests:
-          - not_null:
-              arguments:
-                model_name: ref('fct_orders')
-                column_name: order_date # primary key test
+          - not_null
       - name: amount
         description: "Total amount for the order."
         data_tests:
