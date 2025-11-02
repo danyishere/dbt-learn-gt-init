@@ -16,12 +16,7 @@ semantic_models:
   - name: order_date
     type: time
     type_params:
-      time_granularity:
-        - day
-        - week
-        - month
-        - quarter
-        - year
+      time_granularity: day
   
   measures:
   - name: total_amount

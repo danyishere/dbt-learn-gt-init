@@ -11,8 +11,7 @@ semantic_models:
   - name: most_recent_order_date
     type: time
     type_params:
-      time_granularity:
-        - day
+      time_granularity: day
   
   measures:
   - name: total_lifetime_value    
