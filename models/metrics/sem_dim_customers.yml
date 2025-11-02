@@ -10,7 +10,7 @@ semantic_models:
   dimensions:
   - name: most_recent_order_date
     type: time
-    time_grains:
+    time_granularity:
     - day
   
   measures:
