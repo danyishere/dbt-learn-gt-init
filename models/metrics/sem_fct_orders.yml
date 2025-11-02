@@ -1,6 +1,6 @@
 semantic_models:
 - name: semantic_fct_orders
-  description: An order table that gives payment details for analysis.
+  description: A semantic model for payment details for analysis in BI tools.
   model: ref('fct_orders')
 
   entities:
@@ -27,12 +27,36 @@ semantic_models:
     description: Total amount of orders
     agg: sum
     expr: amount
-  - name: true_total_amount
-    agg: sum
-    expr: case when order_status != 'returned' then amount else 0 end
   - name: avg_amount
     agg: average
     expr: amount
   - name: min_order_amount
     agg: min
     expr: amount
+  - name: order_count
+    agg: count
+    expr: order_id
+
+  metrics:
+    - name: total_amount
+      label: "total_amount"
+      description: total revenue
+      type: simple
+      type_params: 
+        measure: total_amount
+        filter: "order_status != 'returned'"
+    - name: order_count
+      label: order_count
+      description: the number of orders placed
+      type: simple
+      type_params: 
+        measure: order_count
+    - name: pct_deviation_avg_amount
+      label: pct_deviation_avg_amount
+      description: percentage deviation from average order amount
+      type: derived
+      type_params:
+        formula: "((order_amount - avg_amount) / avg_amount) * 100"
+        metrics:
+          - name: order_amount
+          - name: avg_amount
