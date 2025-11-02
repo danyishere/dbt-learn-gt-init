@@ -15,7 +15,7 @@ semantic_models:
     type: categorical
   - name: order_date
     type: time
-    time_grains:
+    time_granularity:
     - day
     - week
     - month
