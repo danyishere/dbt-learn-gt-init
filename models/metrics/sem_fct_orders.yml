@@ -15,12 +15,13 @@ semantic_models:
     type: categorical
   - name: order_date
     type: time
-    time_granularity:
-    - day
-    - week
-    - month
-    - quarter
-    - year
+    type_params:
+      time_granularity:
+        - day
+        - week
+        - month
+        - quarter
+        - year
   
   measures:
   - name: total_amount
