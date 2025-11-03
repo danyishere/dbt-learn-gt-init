@@ -1,5 +1,7 @@
 semantic_models:
 - name: semantic_fct_orders
+  defaults:
+    agg_time_dimension: order_date
   description: A semantic model for payment details for analysis in BI tools.
   model: ref('fct_orders')
 

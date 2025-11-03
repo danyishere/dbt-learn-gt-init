@@ -1,6 +1,6 @@
 semantic_models:
 - name: semantic_dim_customers
-  description: An dim table fir customers
+  description: An dim table for customers
   model: ref('dim_customer')
 
   entities:
@@ -8,7 +8,7 @@ semantic_models:
     type: primary
 
   dimensions:
-  - name: most_recent_order_date
+  - name: order_date
     type: time
     type_params:
       time_granularity: day
@@ -17,3 +17,4 @@ semantic_models:
   - name: total_lifetime_value    
     agg: sum
     expr: lifetime_value
+    agg_time_dimension: order_date
