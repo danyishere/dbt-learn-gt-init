@@ -1,7 +1,7 @@
 semantic_models:
 - name: semantic_dim_customers
   description: An dim table fir customers
-  model: ref('dim_customers')
+  model: ref('dim_customer')
 
   entities:
   - name: customer_id

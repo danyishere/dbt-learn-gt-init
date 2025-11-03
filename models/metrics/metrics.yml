@@ -5,7 +5,13 @@
       type: simple
       type_params: 
         measure: total_amount
-        filter: "order_status != 'returned'"
+      filter: "order_status != 'returned'"
+    - name: avg_amount
+      label: "avg_amount"
+      description: average amount
+      type: simple
+      type_params: 
+        measure: avg_amount
     - name: order_count
       label: order_count
       description: the number of orders placed
@@ -17,7 +23,7 @@
       description: percentage deviation from average order amount
       type: derived
       type_params:
-        formula: "((order_amount - avg_amount) / avg_amount) * 100"
+        expr: "((total_amount - avg_amount) / avg_amount) * 100"
         metrics:
-          - name: order_amount
+          - name: total_amount
           - name: avg_amount
