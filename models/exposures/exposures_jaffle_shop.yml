@@ -8,5 +8,5 @@ exposures:
     depends_on:
       - ref('fct_orders')
     owner:
-      name: Michael McData
-      email: data@jaffleshop.com
+      name: Daniel Moutou
+      email: daniel.moutou@gmail.com
