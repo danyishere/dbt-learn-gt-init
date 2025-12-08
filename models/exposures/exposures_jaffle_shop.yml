@@ -7,6 +7,8 @@ exposures:
     description: 'Exposure for orders data'
     depends_on:
       - ref('fct_orders')
+      - metric('total_amount')
+      - metric('avg_amount')
     owner:
       name: Daniel Moutou
       email: daniel.moutou@gmail.com
