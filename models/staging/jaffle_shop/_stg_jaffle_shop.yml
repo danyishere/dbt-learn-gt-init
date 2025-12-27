@@ -10,6 +10,9 @@ models:
 
   - name: stg_jaffle_shop__orders
     description: unique orders and respective details
+    config:
+      grants:
+        select: ["motix"]
     columns:
       - name: order_id
         description: PK
