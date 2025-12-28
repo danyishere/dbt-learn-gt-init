@@ -1,6 +1,8 @@
 semantic_models:
 - name: semantic_fct_orders
-  description: An order table that gives payment details for analysis.
+  defaults:
+    agg_time_dimension: order_date
+  description: A semantic model for payment details for analysis in BI tools.
   model: ref('fct_orders')
 
   entities:
@@ -15,24 +17,20 @@ semantic_models:
     type: categorical
   - name: order_date
     type: time
-    time_grains:
-    - day
-    - week
-    - month
-    - quarter
-    - year
+    type_params:
+      time_granularity: day
   
   measures:
   - name: total_amount
     description: Total amount of orders
     agg: sum
     expr: amount
-  - name: true_total_amount
-    agg: sum
-    expr: case when order_status != 'returned' then amount else 0 end
   - name: avg_amount
     agg: average
     expr: amount
   - name: min_order_amount
     agg: min
     expr: amount
+  - name: order_count
+    agg: count
+    expr: order_id

@@ -5,16 +5,19 @@ models:
       - name: customer_id
         description: PK
         data_tests:
-          - not_null # primary key test
+          - not_null
           - unique
 
   - name: stg_jaffle_shop__orders
     description: unique orders and respective details
+    config:
+      grants:
+        select: ["motix"]
     columns:
       - name: order_id
         description: PK
         data_tests:
-          - not_null # primary key test
+          - not_null
           - unique
       - name: status
         description: doc('orders_status') # ' ' nécessaires pour du YAML
@@ -41,13 +44,15 @@ models:
       - name: item_id
         description: PK
         data_tests:
+          - not_null
           - unique
   - name: stg_jaffle_shop__products
     description: unique products and respective details
     columns:
-      - name: product_id
+      - name: sku
         description: PK
         data_tests:
+          - not_null
           - unique
   - name: stg_jaffle_shop__stores
     description: unique stores and respective details
@@ -55,11 +60,5 @@ models:
       - name: store_id
         description: PK
         data_tests:
-          - unique
-  - name: stg_jaffle_shop__supplies
-    description: unique supplies and respective details
-    columns:
-      - name: supply_id
-        description: PK
-        data_tests:
+          - not_null
           - unique

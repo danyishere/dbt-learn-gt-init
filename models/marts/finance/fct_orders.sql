@@ -39,6 +39,7 @@ final as (
 
     from orders
     left join order_payments using (order_id)
+    where orders.status != 'returned'
     
 )
 select * from final A
