@@ -3,7 +3,7 @@ run-name: PR opened by ${{ github.actor }}
 on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: read
