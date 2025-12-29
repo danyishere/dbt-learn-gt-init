@@ -1,0 +1,12 @@
+jaffleeeee:
+  target: ci
+  outputs:
+    ci:
+      type: snowflake
+      threads: 16
+      account: "{{ env_var('DBT_SF_ACCNT') }}"
+      user: github_actions_service_user
+      database: ci
+      warehouse: snowflake_learning_wh
+      schema: jaffle_shop
+      role: role_dbt_ci
