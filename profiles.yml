@@ -1,0 +1,34 @@
+jaffleeeee:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      threads: 16
+      account: "{{ env_var('DBT_SF_ACCNT') }}"
+      user: dbt_dev_user
+      database: analytics
+      warehouse: snowflake_learning_wh
+      schema: dbt_dmoutou
+      password: "{{ env_var('DBT_DEV_PW') }}"
+      role: role_dbt_dev
+  
+    ci:
+      type: snowflake
+      threads: 16
+      account: "{{ env_var('DBT_SF_ACCNT') }}"
+      user: github_actions_service_user
+      database: ci
+      warehouse: snowflake_learning_wh
+      schema: jaffle_shop
+      role: role_dbt_ci
+    
+    prod: 
+      type: snowflake
+      threads: 16
+      account: "{{ env_var('DBT_SF_ACCNT') }}"
+      user: dbt_prod_user
+      database: prod       
+      warehouse: snowflake_learning_wh
+      schema: jaffle_shop
+      password: "{{ env_var('DBT_PROD_PW') }}"
+      role: role_dbt_prod 
