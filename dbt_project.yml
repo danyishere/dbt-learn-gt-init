@@ -35,6 +35,7 @@ models:
   jaffle_shop:
     #+required_docs: true
     staging:
+      +schema: bronze  # use a different schema for staging models
       +materialized: view
       #+schema: staging # use a different schema for staging models
     marts:

@@ -3,7 +3,11 @@
     {%- set default_schema = target.schema -%}
     {%- if custom_schema_name is none -%}
 
-        {{ default_schema }}_{{ target.name | trim }}
+        {{ default_schema }}
+
+    {% elif target.schema == 'qa' %}
+
+        {{ custom_schema_name | trim }}_{{ target.name | trim }}
 
     {%- else -%}
 
